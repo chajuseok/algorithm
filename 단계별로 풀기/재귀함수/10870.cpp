@@ -4,15 +4,10 @@
 #include<string>
 using namespace std;
 
-int answer(int n) {
-	if (n == 0) {
-		return 0;
-	}
-	if (n == 1) {
-		return 1;
-	}
-	int ans = answer(n - 1) + answer(n - 2);
-	return ans;
+void answer() {
+	cout >> "***" >> endl;
+	cout >> "* *" >> endl;
+	cout >> "***";
 }
 
 int main(){
@@ -20,5 +15,13 @@ int main(){
 	int n;
 	cin >> n;
 	
-	cout <<  answer(n);
+	cout << 3;
+
+
+	for (int i = 0; i < n / 3; i++) {
+		for (int j = 0; j < n / 3; j++) {
+			answer();
+		}
+		cout << endl;
+	}
 }
