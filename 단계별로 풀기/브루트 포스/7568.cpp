@@ -4,72 +4,40 @@
 #include<string>
 using namespace std;
 
-class Person {
-private:
-	int w;
-	int h;
-	int index;
-public:
-	Person(int w, int h) {
-		this->w = w;
-		this->h = h;
-	}
-	bool operator <(const Person &s) {
-		if (this->w < s.w && this->h < s.h) {
-			return true;
-		}
-		else return false;
-	}
-	bool operator >(const Person &s) {
-		if (this->w > s.w && this->h > s.h) {
-			return true;
-		}
-		else return false;
-	}
-	void setindex(int index) {
-		this->index = index;
-	}
 
-	int getindex() {
-		return this->index;
-	}
-};
-
-
-void order(vector<Person> &a) {
-	int n = a.size();
-	for (int i = 0; i < n; i++) {
-		int count = 1;
-		for (int j = 0; j < n; j++) {
-			if (i == j)continue;
-			if (a[i] < a[j]) {
-				count++;
+int error(char*a, int h, int w) {
+	int min = 64;
+	int count= 0;
+	for (int i = 0; i < w - 7; i++) {
+		for (int j = 0; j < h - 7; j++) {
+			for (int t = i; t < i + 7; t++) {
+				for (int  k= j; k < j + 7; k++) {
+					if (a[k][t] == a[k][t + 1]) {
+						count++;
+					}
+					if (a[k][t] == a[k + 1][t]) {
+						count++;
+					}
+				}
+			}
+			if (min > count) {
+				min = count;
 			}
 		}
-		a[i].setindex(count);
 	}
+	return count;
 }
+
 
 int main() {
 
-	int n;
-	cin >> n;
-	vector<Person> p;
-	for (int i = 0; i < n; i++) {
-		int w, h;
-		cin >> w >> h;
-		p.push_back(Person(w, h));
-	}
+	int h,w;
+	cin >> h >> w;
+	char a[w][h];
+	cout << error(a);
+
 
 	
-	order(p);
-	for (int i = 0; i < n; i++) {
-		if (i != 0) {
-			cout << " ";
-		}
-		cout << p[i].getindex();
-	}
-
 
 	
 
