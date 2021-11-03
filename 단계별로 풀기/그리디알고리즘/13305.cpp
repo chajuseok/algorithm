@@ -9,27 +9,21 @@ using namespace std;
 
 
 int main() {
-
-	int n;
-	cin >> n;
-	long long d[100001];
-	long long v[100001];
-	long answer = 0; 
-	
-	for (int i = 0; i < n - 1; i++) {
-		cin >> d[i];
-	}
-	for (int i = 0; i < n; i++) {
-		cin >> v[i];
-	}
-	int f = v[0];
-	for (int i = 0; i < n - 1; i++) {
-		if (f > v[i]) {
-			f = v[i];
+	int a, b;
+	cin >> a >> b;
+	while (a != 0 || b != 0) {
+		if (b / a != 0 && b%a==0) {
+			cout << "factor";
+			cout << '\n';
 		}
-		answer += f * d[i];
+		else if(a / b != 0 && a%b ==0) {
+			cout << "multiple"
+			cout << '\n';
+		}
+		else {
+			cout << "neither";
+			cout << '\n';
+		}
+		cin >> a >> b;
 	}
-
-	
-	cout << answer;
 }
